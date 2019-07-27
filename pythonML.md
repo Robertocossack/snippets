@@ -23,7 +23,6 @@ reg = LinearRegression()
 ```
 
 ### Fit the regressor
-
 ```python
 reg.fit(X,y)
 ```
@@ -57,8 +56,24 @@ regd = DecisionTreeRegressor(max_depth=3)
 regd.fit(X,y)
 ```
 # Random Forest
+```python
+# Load the library
+from sklearn.ensemble import RandomForestClassifier
+# Create an instance
+clf = RandomForestClassifier(max_depth=4)
+# Fit the data
+clf.fit(X,y)
+```
 
 # Gradient Boosting Tree
+```python
+# Load the library
+from sklearn.ensemble import GradientBoostingClassifier
+# Create an instance
+clf = GradientBoostingClassifier(max_depth=4)
+# Fit the data
+clf.fit(X,y)
+```
 
 # Classification
 ## Logistic regression
@@ -66,7 +81,6 @@ regd.fit(X,y)
 # Load the library
 from sklearn.linear_model import LogisticRegression
 # Create an instance of the classifier
-
 clf=LogisticRegression()
 # Fit the data
 clf.fit(X,y)
@@ -105,7 +119,6 @@ from sklearn.svm import SVC
 # Create an instance of the classifier
 clf = SVC(kernel="linear",C=10)
 # Fit the data
-
 clf.fit(X,y)
 ```
 # Random Forest
@@ -131,7 +144,6 @@ reg.fit(X_train,y_train)
 ```python
 # Load the scorer
 from sklearn.metrics import mean_absolute_error
-
 # Use against predictions
 mean_absolute_error(reg.predict(X_test),y_test)
 ```
@@ -153,7 +165,6 @@ np.sqrt(mean_squared_error(reg.predict(X_test),y_test))
 ```python
 # Direct Calculation
 np.corrcoef(reg.predict(X_test),y_test)[0][1]
-
 # Custom Scorer
 from sklearn.metrics import make_scorer
 def corr(pred,y_test):
@@ -180,7 +191,6 @@ cross_val_score(reg,X,y,cv=5,scoring=make_scorer(bias))
 from sklearn.metrics import accuracy_score
 accuracy_score(y_test,clf.predict(X_test))
 # Cross Validation
-
 cross_val_score(clf,X,y,scoring="accuracy")
 ```
 
@@ -207,7 +217,6 @@ plt.plot(fp,tp)
 #### AUC
 ```python
 # Metrics
-
 from sklearn.metrics import roc_curve, auc
 fp,tp,_ = roc_curve(y_test,pred[:,1])
 auc(fp,tp)
@@ -233,9 +242,16 @@ reg_test = GridSearchCV(KNeighborsRegressor(),
  param_grid={"n_neighbors":np.arange(3,50)})
 # Fit will test all of the combinations
 reg_test.fit(X,y)
-
 # Best estimator and best parameters
 reg_test.best_score_
 reg_test.best_estimator_
 reg_test.best_params_
 ```
+
+
+
+
+
+
+
+
